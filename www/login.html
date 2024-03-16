@@ -9,11 +9,16 @@
 
     <title>Login</title>
 </head>
-
 <body>
-    <div class="container">
-        <a class="login-button">Login with GitHub</a></li>
-    </div>
-</body>
+    <h1>Login</h1>
+    <p>Sign in using GitHub:</p>
+    <button onclick="signInWithGitHub()">Sign in with GitHub</button>
+
+    <script>
+        function signInWithGitHub() {
+            // Redirect the user to GitHub for authentication
+            window.location.href = 'https://github.com/login/oauth/authorize?client_id=6fda7825f4e594710744&redirect_uri=http://127.0.0.1:5500/www/login.html';
+        }
+    </script>
 
 </html>

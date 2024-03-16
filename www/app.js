@@ -4,8 +4,34 @@ const empty = document.querySelector('#empty');
 const usernameElement = document.querySelector('#username');
 
 async function getUser() {
-    // TODO
+    const token = localStorage.getItem('access_token');
+
+    if (!token) {
+        // Handle the case when the user is not authenticated
+        return;
+    }
+
+    try {
+        const response = await fetch('https://YOUR_AUTH0_DOMAIN/userinfo', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (!response.ok) {
+            // Handle the case when unable to retrieve user information
+            return;
+        }
+
+        const userData = await response.json();
+
+        // Display the username in the username div
+        document.getElementById('username').innerText = userData.username;
+    } catch (error) {
+        console.error('Error:', error);
+    }
 }
+
 
 async function updateTask() {
     // TODO
